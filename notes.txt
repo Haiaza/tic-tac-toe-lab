@@ -1,0 +1,19 @@
+Hint for the board
+
+💡 The nine elements in the board array will correspond to a square on the board. Index 0 (board[0]) will represent the top-left square. Index 1 (board[1]) will represent the top-middle square. Index 2 (board[2]) will represent the top-right square. Index 3 (board[3]) will represent the middle-left square. So on, continuing through the entire board until… Index 8 (board[8]) will represent the bottom-right square.
+
+
+Im unsure if the user user value is a string or variable i've yet to assign.
+
+💡 Player O will be represented by O.
+
+
+Hint for winner logic
+
+💡 A false value in winner means that there is no winner yet. A value of true in winner will mean that a player has won.
+
+Once winner is set to true, we can determine which player won by whose turn it was when the winning move was played.
+
+Hint for the tie logic
+
+💡 A true value in tie will mean that the board array contains no more empty strings ('') and will be used to render a tie message if winner is still false by the time all squares are played.
