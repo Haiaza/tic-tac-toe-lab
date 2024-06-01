@@ -17,3 +17,19 @@ Once winner is set to true, we can determine which player won by whose turn it w
 Hint for the tie logic
 
 💡 A true value in tie will mean that the board array contains no more empty strings ('') and will be used to render a tie message if winner is still false by the time all squares are played.
+
+
+Different states i need to track.
+1.Player Choice
+2.CPU Choice
+3.tile occupancy
+4.Game winner / tie
+5.Message displaying the game winner / tie announcement
+
+Constants i need to create.
+1.the board
+2.the representation for both player choices DOM elements
+
+--- the logic for player selections 
+--- the logic for CPU selection
+    --- logic for selection that isnt occupied
