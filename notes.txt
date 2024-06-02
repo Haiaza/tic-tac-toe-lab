@@ -18,6 +18,8 @@ Hint for the tie logic
 
 💡 A true value in tie will mean that the board array contains no more empty strings ('') and will be used to render a tie message if winner is still false by the time all squares are played.
 
+🧠 Each array will contain three indices of the board that make a winner if they hold the same player value ('X' or 'O').
+
 
 Different states i need to track.
 1.Player Choice
@@ -54,3 +56,13 @@ from line 78
     squareEls[idx].textContent = element
   });
 }
+
+from line 51
+    ticTacToe.addEventListener('click', (event) =>{
+  if(event.target.classList.contains('sqr')){
+    console.log(`We clicked ${event.target.id}`)
+    // if(event.target.textContent === 'x'){
+    //     console.log('Test complete')  Ive tested this and it isnt working thus far
+    // }
+  }
+})
