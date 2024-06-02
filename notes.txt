@@ -33,3 +33,24 @@ Constants i need to create.
 --- the logic for player selections 
 --- the logic for CPU selection
     --- logic for selection that isnt occupied
+
+
+
+
+
+
+
+
+
+
+
+
+from line 78
+    const updateBoard = () => {
+
+  // loop over board, for each element: 
+  //Using the current index of the iteration to access the corresponding square in 'squareEls'
+  board.forEach((element, idx) => {
+    squareEls[idx].textContent = element
+  });
+}

@@ -11,11 +11,14 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
-let board = ['','','','','','','','',''];
+let board =  ['X','O','O',
+              '','','',
+              '','',''];
 let turn = 'x';
 let winner = false;
 let tie = false;
 
+let player_O = 'o'
 
 
 
@@ -25,16 +28,30 @@ let tie = false;
 
 
 
-
 /*------------------------ Cached Element References ------------------------*/
 
-messageEl = document.querySelector('#message')
+const messageEl = document.querySelector('#message')
 // console.log(messageEl.textContent)
 
 const squareEls = document.querySelectorAll('.sqr')
 
 
 
+
+/*----------------------------- Event Listeners -----------------------------*/
+
+// create a variable for the parent that has trickle down properties
+const ticTacToe = document.querySelector('section')
+
+
+ticTacToe.addEventListener('click', (event) =>{
+  if(event.target.classList.contains('sqr')){
+    console.log(`We clicked ${event.target.id}`)
+    // if(event.target.textContent === 'x'){
+    //     console.log('Test complete')  Ive tested this and it isnt working thus far
+    // }
+  }
+})
 
 
 
@@ -45,11 +62,29 @@ const squareEls = document.querySelectorAll('.sqr')
 
 const render = () => {
 
-//set aside for now
-
+updateBoard();
+updateMessage();
 
 }
 
+const updateMessage = () =>{
+  if(winner == false&& tie == false){
+    console.log(`The game is still in progress`)
+  } if (winner == false && tie == true) {
+    console.log(`Game over: Tie!`)
+  } /*else {
+    console.log(`The game is over! The winner is ${}`)
+  }*/
+}
+
+const updateBoard = () => {
+
+  // loop over board, for each element: 
+  //Using the current index of the iteration to access the corresponding square in 'squareEls'
+  board.forEach((element, idx) => {
+    squareEls[idx].textContent = element
+  });
+}
 
 const init = () => {
 
@@ -59,33 +94,12 @@ const init = () => {
 }
 
 
-const updateBoard = () => {
-
-  // loop over board, for each element: 
-  //Using the current index of the iteration to access the corresponding square in 'squareEls'
-  board.forEach((square, idx) => {
-    if (square) {
-      squareEls[idx].style.backgroundColor = 'blue';
-
-    }
-  });
-}
 
 
 
-updateBoard()
-
-/*----------------------------- Event Listeners -----------------------------*/
-
-
-
-
-
-
-
-
-
-
+updateMessage()
+// updateBoard()
+// console.log(squareEls[3]);
 /*----------------------------- Code -----------------------------*/
 
 init()
