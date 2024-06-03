@@ -18,7 +18,7 @@ let turn = 'X';
 let winner = false;
 let tie = false;
 
-let player_O = 'o'
+let player_O = 'O'
 
 const winningCombos = [
   [0,1,2],[0,3,6],[0,4,8],
@@ -55,20 +55,20 @@ squareEls.forEach((square) => {
 const ticTacToe = document.querySelector('section')
 
 
-ticTacToe.addEventListener('click', (event) =>{
-  //referring to the board, there is a eventHandler listening for clicks
-  //once it registers a click, the below 'event' occurs
-  if(event.target.classList.contains('sqr')){
-    //if what was clicked has this class....
-    //execute the below
-    console.log(`We clicked ${event.target.id}`)
+// ticTacToe.addEventListener('click', (event) =>{
+//   //referring to the board, there is a eventHandler listening for clicks
+//   //once it registers a click, the below 'event' occurs
+//   if(event.target.classList.contains('sqr')){
+//     //if what was clicked has this class....
+//     //execute the below
+//     console.log(`We clicked ${event.target.id}`)
     
 
-    // if(event.target.textContent === 'x'){
-    //     console.log('Test complete')  Ive tested this and it isnt working thus far
-    // }
-  }
-})
+//     // if(event.target.textContent === 'x'){
+//     //     console.log('Test complete')  Ive tested this and it isnt working thus far
+//     // }
+//   }
+// })
 
 
 
@@ -86,7 +86,7 @@ updateMessage();
 
 const updateMessage = () =>{
   if(winner == false&& tie == false){
-    console.log(`The game is still in progress`)
+    console.log(`The game is in progress`)
   } if (winner == false && tie == true) {
     console.log(`Game over: Tie!`)
   } else {
@@ -99,7 +99,7 @@ const updateBoard = () => {
   // loop over board, for each element: 
   //Using the current index of the iteration to access the corresponding square in 'squareEls'
   board.forEach((element, idx) => {
-    console.log(idx,element)
+    // console.log(idx,element)
     if(element === 'X'){
       squareEls[idx].style.backgroundColor = 'green'
     } else if (element === 'O'){
@@ -116,9 +116,13 @@ const init = () => {
 }
 
 function clickHandle(event){
-  console.log('clickd')
+  console.log(`We clicked ${event.target.id}`)
   const squareIndex = event.target.id
   placePiece(squareIndex)
+  checkForWinner()
+  checkForTie()
+  switchPlayerTurn()
+  render()
 }
 
 
@@ -167,6 +171,8 @@ function checkForWinner(){
     board[2] !== ''
   ) {
     winner = true
+  } else {
+    console.log('Keep playing!')
   }
 }
 
@@ -176,10 +182,24 @@ function checkForWinner(){
 function checkForTie(){
   if(winner === true){
     return
-  }else if(board.contains = ''){
-    tie === false
+  }else if(board.includes('')){
+    tie = false
   } else {
-    tie === true
+    tie = true
+  }
+}
+
+function switchPlayerTurn(){
+  if (winner === true) {
+    return
+  } else if (winner === false) {
+    if (turn === 'X') {
+      turn = 'O'
+      console.log(`It's now player ${turn}'s turn`)
+    } else if (turn === 'O'){
+      turn = 'X'
+      console.log(`It's now player ${turn}'s turn`)
+    }
   }
 }
 
